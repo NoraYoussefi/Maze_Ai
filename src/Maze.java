@@ -19,6 +19,7 @@ import labr_code.interface_principale;
  */
 public class Maze {
 
+
     public static short OBSTICLE = -1;
     public static short START_LOC_VALUE = -2;
     public static short GOAL_LOC_VALUE = -3;
@@ -27,6 +28,15 @@ public class Maze {
     int height = 0;
     public Dimension startLoc = new Dimension();
     public Dimension goalLoc = new Dimension();
+    
+    //agent mouvement code
+    public final static short UP=38;
+    public final static short DOWN=40;
+    public final static short LEFT=37;
+    public final static short RIGHT=39;
+
+    //agent case dim
+    public int line=1,col=1;
     /**
      * The maze (or search space) data is stored as a short integer rather than
      * as a boolean so that bread-first style searches can use the array to
@@ -73,7 +83,7 @@ public class Maze {
 //        }
 
         //---------- ce qu'on a ajouter ----------
-        File fileDirs = new File("C:\\Users\\dell\\Documents\\NetBeansProjects\\AI_project\\src\\mazeFile\\LABY_21x21.txt");
+        File fileDirs = new File("C:\\Users\\lenovo\\Desktop\\AI_project\\AI_project\\src\\mazeFile\\LABY_21x21.txt");
 
         BufferedReader in = null;
         try {
@@ -91,13 +101,12 @@ public class Maze {
             i = 1;
             while ((str = in.readLine()) != null) {
 
-                for (j = 1; j < str.length(); j++) {
+                for (j = 0; j < str.length(); j++) {
                     if (str.charAt(j) == ' ') {
-                        maze[j][i] = 0;
+                        maze[j+1][i] = 0;
                     } else {
-                        maze[j][i] = -1;
+                        maze[j+1][i] = -1;
                     }
-
                 }
                 i++;
             }
@@ -115,13 +124,15 @@ public class Maze {
             Logger.getLogger(interface_principale.class.getName()).log(Level.SEVERE, null, ex);
         }
         addObsticles();
-
+        
         /**
          * Specify the starting location
          */
-        startLoc.width = 0;
-        startLoc.height = 0;
-        maze[1][1] = START_LOC_VALUE;
+//        startLoc.width = 0;
+//        startLoc.height = 0;
+//        this.setValue(0, 0, Maze.START_LOC_VALUE);  
+
+//        maze[line][col] = START_LOC_VALUE;
         /**
          * Specify the goal location
          */
@@ -130,13 +141,15 @@ public class Maze {
         maze[width][height] = GOAL_LOC_VALUE;
 
     }
+    
 
+    
     synchronized public short getValue(int x, int y) {
         return maze[x + 1][y + 1];
     }
 
     synchronized public void setValue(int x, int y, short value) {
-        maze[x + 1][y + 1] = value;
+        maze[x+1][y+1] = value;
     }
 
     public int getWidth() {
@@ -147,9 +160,16 @@ public class Maze {
         return height;
     }
 
+    
+    
+    
+    
+    
+    
+    
     //--------------ajouter des obstacles------------------
     public void addObsticles() {
-        File fileDirs = new File("C:\\Users\\dell\\Documents\\NetBeansProjects\\AI_project\\src\\mazeFile\\LABY_21x21.txt");
+        File fileDirs = new File("C:\\Users\\lenovo\\Desktop\\AI_project\\AI_project\\src\\mazeFile\\LABY_21x21.txt");
 
         BufferedReader in = null;
         try {
@@ -176,22 +196,24 @@ public class Maze {
                         java.util.Random rnd = new java.util.Random();
                         rnd.setSeed((long) 28);
                         int max_obsticles = (width * height) * 5 / 100;
-                        for (i = 0; i < max_obsticles; i++) {
+                        
+                        for (i = 0; i < max_obsticles/2; i++) {
                             int x = rnd.nextInt(width - 1) + 1;
                             int y = rnd.nextInt(height - 1) + 1;
                             maze[x + 1][y + 1] = Bomb;
-//                             maze[x + 1][y + 1] = START_LOC_VALUE;
                         }
-
-//                        maze[j][i] = -1;
                     }
                 }
                 i++;
             }
+                System.out.print("there are "+i+" Obstacles");
 
         } catch (IOException ex) {
             Logger.getLogger(interface_principale.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
+    
+    
+    
 }

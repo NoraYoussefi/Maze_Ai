@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.image.*;
 import java.awt.event.*;
 
-public class MazeBreadthFirstSearch extends javax.swing.JFrame {
+public class MazeBreadthFirstSearch extends javax.swing.JFrame implements KeyListener{
     JPanel jPanel1 = new JPanel();
     BreadthFirstSearchEngine currentSearchEngine = null;
 
@@ -86,6 +86,29 @@ public class MazeBreadthFirstSearch extends javax.swing.JFrame {
         jPanel1.setLayout(null);
         this.setSize(370, 420);
         this.setVisible(true);
+        this.addKeyListener(this);
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+         System.out.println("Key Typed " + e.getKeyChar());
+         System.out.println("Key Typed " + e.getKeyCode());
+
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        System.out.println("Key Pressed " + e.getKeyChar());
+         System.out.println("Key Pressed " + e.getKeyCode());
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        System.out.println("Key Released " + e.getKeyChar());
+         System.out.println("Key Released " + e.getKeyCode());
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

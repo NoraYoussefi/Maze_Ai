@@ -36,12 +36,13 @@ public class interface_principale extends javax.swing.JFrame  {
          int sizeW=0;
          int j=0;
          int i=0;
-          File fileDirs = new File("C:\\Users\\dell\\Documents\\NetBeansProjects\\app_java_labr\\src\\mazeFile\\LABY_21x21.txt");
+          File fileDirs = new File("C:\\Users\\lenovo\\Desktop\\AI_project\\AI_project\\src\\mazeFile\\LABY_21x21.txt");
 
-           BufferedReader in = null;
+         BufferedReader in = null;
          try {
-             in = new BufferedReader(
-                     new InputStreamReader(new FileInputStream(fileDirs), "utf-8"));
+             
+             in = new BufferedReader(new InputStreamReader(new FileInputStream(fileDirs), "utf-8"));
+             
          } catch (FileNotFoundException ex) {
              Logger.getLogger(interface_principale.class.getName()).log(Level.SEVERE, null, ex);
          } catch (UnsupportedEncodingException ex) {
@@ -52,8 +53,12 @@ public class interface_principale extends javax.swing.JFrame  {
    
         
          try {
+             //while maze file not read
              while ((str = in.readLine()) != null) {
-              //   System.out.println(str);
+                 
+//                 System.out.println("Line Read : "+str);
+                 
+                 
               sizeW=str.length()+1;
                  
              
@@ -92,6 +97,7 @@ public class interface_principale extends javax.swing.JFrame  {
          System.out.println(sizeW);
      }
      
+     
    
     public interface_principale()
     {
@@ -116,7 +122,7 @@ public class interface_principale extends javax.swing.JFrame  {
     
      public String readFile()
     {
-         File fileDirs = new File("C:\\Users\\Home\\Documents\\NetBeansProjects\\AI_project\\src\\mazeFile\\LABY_21x21.txt");
+         File fileDirs = new File("C:\\Users\\lenovo\\Desktop\\AI_project\\AI_project\\src\\mazeFile\\LABY_21x21.txt");
         // LIS LE FICHIER
         String lines = "";
         String line;
@@ -157,14 +163,15 @@ public class interface_principale extends javax.swing.JFrame  {
 
         try{
             int c;
-             char car=0;
-             String[] arr = new String[1];
-             var maList = new ArrayList<String>(Arrays.asList(arr));
+            char car=0;
+            String[] arr = new String[1];
+            var maList = new ArrayList<String>(Arrays.asList(arr));
 
-            File ips = new File("C:\\Users\\dell\\Documents\\NetBeansProjects\\app_java_labr\\src\\mazeFile\\LABY_21x21.txt");
+            File ips = new File("C:\\Users\\lenovo\\Desktop\\AI_project\\AI_project\\src\\mazeFile\\LABY_21x21.txt");
             FileReader ipsr = new FileReader(ips);
             BufferedReader br=new BufferedReader(ipsr);
-              StringBuffer ligne= new StringBuffer();
+            StringBuffer ligne= new StringBuffer();
+            
             while((c=br.read())!=-1){
                  car= (char)br.read();
                  //function  here

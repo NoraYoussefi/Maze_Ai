@@ -41,7 +41,7 @@ public class Maze
     Maze() throws FileNotFoundException
     {
     
-    Scanner myScanner = new Scanner(new File("C:\\Users\\dell\\Documents\\NetBeansProjects\\app_java_labr\\src\\mazeFile\\LABY_21x21.txt"));
+    Scanner myScanner = new Scanner(new File("C:\\Users\\lenovo\\Desktop\\AI_project\\AI_project\\src\\mazeFile\\LABY_21x21.txt"));
     final int WIDTH = myScanner.nextInt();
     final int HEIGHT = myScanner.nextInt();
     Square [] [] maze = new Square[HEIGHT] [WIDTH];
@@ -55,6 +55,10 @@ public class Maze
         }
     }
     }
+    
+    
+    
+    
     public static void main(String[] args) throws FileNotFoundException
     {
             Maze aMaze = new Maze();
